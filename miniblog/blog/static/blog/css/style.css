@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(3, 2, 34);
+  color: antiquewhite;
+}
+.card {
+  height: 15rem;
+  overflow: hidden;
+}
+form {
+  color: steelblue;
+}
+.form-control {
+  background: wheat;
+}
