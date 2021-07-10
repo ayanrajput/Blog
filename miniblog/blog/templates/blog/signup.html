@@ -8,7 +8,7 @@ load static %} {% block content %}
       {{ fm.label_tag }}{{ fm }}{{fm.errors|striptags}}
     </div>
     {% endfor %}
-    <input class="btn btn-primary mt-3" type="submit" value="Submit" />
+    <input class="btn btn-primary mt-3" type="submit" value="Signup" />
     {% if form.non_field_errors %} {% for error in form.non_field_erros %}
     <p class="alert alert-danger my-3">{{ error }}</p>
     {% endfor %} {% endif %}
