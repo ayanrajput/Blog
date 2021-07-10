@@ -19,7 +19,11 @@ def contact(request):
 
 
 def dashboard(request):
-    return render(request, 'blog/dashboard.html')
+    if request.user.is_authenticated:
+        posts = Post.objects.all()
+        return render(request, 'blog/dashboard.html', {'posts': posts})
+    else:
+        return HttpResponseRedirect('/login/')
 
 
 def user_logout(request):
@@ -56,3 +60,24 @@ def user_login(request):
         return render(request, 'blog/login.html', {'form': form})
     else:
         return HttpResponseRedirect('/dashboard')
+
+
+def add_post(request):
+    if request.user.is_authenticated:
+        return render(request, 'blog/addpost.html')
+    else:
+        return HttpResponseRedirect('/login/')
+
+
+def update_post(request):
+    if request.user.is_authenticated:
+        return render(request, 'blog/updatepost.html')
+    else:
+        return HttpResponseRedirect('/login/')
+
+
+def delete_post(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/dashboard')
+    else:
+        return HttpResponseRedirect('/login/')
