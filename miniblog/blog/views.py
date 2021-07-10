@@ -2,10 +2,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import SignUpForm, LoginForm
 from django.contrib import messages
+from .models import Post
 
 
 def home(request):
-    return render(request, "blog/home.html")
+    posts = Post.objects.all()
+    return render(request, "blog/home.html", {'posts': posts})
 
 
 def about(request):

@@ -2,19 +2,14 @@
 load static %} {% block content %}
 <div class="col-sm-10">
   <h3 class="text-white my-4">Home</h3>
-  <div class="card text-black bg-primary">
-    <div class="card-header">Featured</div>
+  {% for post in posts %}
+  <div class="card text-black bg-primary my-4">
+    <div class="card-header">{{post.title}}</div>
     <div class="card-body">
-      <p class="card-text">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, tempora
-        ratione. Delectus, temporibus dolor suscipit corrupti nobis voluptas
-        voluptates nulla harum incidunt quod vitae labore aperiam atque quae
-        ullam iusto laudantium quas optio repudiandae odio iure omnis?
-        Distinctio, eum dolorem maiores, aliquid reprehenderit consequatur
-        debitis, ea et quod quo error.
-      </p>
+      <p class="card-text">{{post.desc}}</p>
     </div>
   </div>
+  {% endfor %}
 </div>
 
 {% endblock content %}
