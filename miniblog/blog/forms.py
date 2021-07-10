@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
 from django.contrib.auth.models import User
-from django.forms import widgets
+from django.forms import fields, widgets
 from django.utils.translation import gettext, gettext_lazy as _
+from .models import Post
 
 
 class SignUpForm(UserCreationForm):
@@ -29,3 +30,12 @@ class LoginForm(AuthenticationForm):
         attrs={'autofocus': True, "class": "form-control"}))
     password = forms.CharField(label=_("Password"), strip=False, widget=forms.PasswordInput(
         attrs={"autocomplete": "current-password", "autofocus": True, "class": 'form-control'}))
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'desc']
+        labels = {'title': 'Title', 'desc': 'Description'}
+        widgets = {'title': forms.TextInput(
+            attrs={'class': 'form-control'}), 'desc': forms.Textarea(attrs={'class': 'form-control'}), }
